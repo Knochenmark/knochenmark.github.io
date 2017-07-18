@@ -2,7 +2,7 @@
 
 var gulp        = require('gulp'),
     pug         = require('gulp-pug'),
-    clean       = require('gulp-clean'),       
+    clean       = require('gulp-clean'),
     stylus      = require('gulp-stylus'),
     jeet        = require('jeet'),
     rupture     = require('rupture'),
@@ -12,13 +12,13 @@ var gulp        = require('gulp'),
     cssnano     = require('gulp-cssnano'),
     uglify      = require('gulp-uglify'),
     jshint      = require("gulp-jshint"),
-    concat      = require('gulp-concat'), 
+    concat      = require('gulp-concat'),
     imagemin    = require('gulp-imagemin'),
     browserSync = require('browser-sync'),
     reload      = browserSync.reload,
     plumber     = require('gulp-plumber'),
-    watch       = require('gulp-watch'), 
-    batch       = require('gulp-batch'),       
+    watch       = require('gulp-watch'),
+    batch       = require('gulp-batch'),
     runSequence = require('run-sequence'),
 
     // Paths
@@ -53,7 +53,6 @@ var gulp        = require('gulp'),
                 };
 
 
-
 // Clean all 'dest' directory before generating the files
 gulp.task('clean', function() {
     return gulp.src(paths.dest + '*')
@@ -61,8 +60,8 @@ gulp.task('clean', function() {
 });
 
 
-// Pug Task 
-gulp.task('pug', function() { 
+// Pug Task
+gulp.task('pug', function() {
     return gulp.src(srcPaths.pugPages)
         .pipe(plumber())
         .pipe(pug({
@@ -143,7 +142,7 @@ gulp.task('watch', function () {
 
 
 // Wait for pug, then launch the Server
-gulp.task('browser-sync', ['pug'], function() {    
+gulp.task('browser-sync', ['pug'], function() {
     browserSync({
         server: {
             baseDir: './'
