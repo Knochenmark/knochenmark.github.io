@@ -9,21 +9,37 @@
     <link rel="stylesheet" href="assets/css/main.css"/>
   </head>
   <body>
-    <header class="header-page">
-      <div class="container">
-        <div class="header-page__brand brand">
-          <p>a simple boilerplate using Gulp, Jade, Stylus and Browsersync</p>
+    <header class="header-page"></header>
+    <section id="home">
+      <div class="light-half">
+        <div class="light">
+          <div class="wrapper">
+            <h1 class="author">Knochenmark</h1>
+            <h2 class="subline">Some cool wording</h2>
+          </div>
         </div>
       </div>
-    </header>
-    <div class="container">
-      <main class="main-page">
-        <p>Mark's Portfolio</p>
-      </main>
-    </div>
-    <footer class="footer-page">
-      <p>Made with <span class="emoji">&#x1F37A </span> by <a class="footer-page__link" href="https://github.com/knochenmark">Knochenmark</a></p>
-    </footer>
+      <div class="dark-half">
+        <div class="dark"></div>
+      </div>
+    </section>
+    <section id="pages">
+      <aside class="vertical-sidebar">
+        <div class="vertical-logo"></div>
+        <div class="vertical-menu"></div>
+        <div class="vertical-social">
+          <svg class="logo">
+            <use xlink:href="/src/img/codepen"></use>
+          </svg>
+        </div>
+      </aside>
+      <article>
+        <p>some text</p>
+        <footer class="footer-page">
+          <p>Made with <span class="emoji">&#x1F37A </span> by <a class="footer-page__link" href="https://github.com/knochenmark">Knochenmark</a></p>
+        </footer>
+      </article>
+    </section>
     <script async="async" src="assets/js/main.js"></script>
   </body>
 </html:5>
