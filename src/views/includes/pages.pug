@@ -1,17 +1,68 @@
 aside(class="vertical-sidebar")
     .vertical-logo
+      .icon
+        a(href="#home")
+          include ../svg/anchor.svg
     .vertical-menu
+      nav.home-navigation
+        .nav-item
+          a(href="#home") Home
+        .nav-item
+          a(href="#projects") Projects
+        .nav-item
+          a(href="#about") About Me
+        .nav-item
+          a(href="#contact") Contact
     .vertical-social
       .icon
-        include ../svg/github.svg
+        a(href="https://github.com/Knochenmark")
+          include ../svg/github.svg
 section(id="projects")
   article
+    h1 Projects
+    .project-list
+      .project
+        a(href="#")
+          .project-img
+            img(src="assets/img/700x400.png")
+          .project-desc
+            .project-title Weather App
+            .project-text FCC Challenge Weather app bliblablub
+    .project-list
+      .project
+        a(href="#")
+          .project-img
+            img(src="assets/img/700x400.png")
+          .project-desc
+            .project-title Weather App
+            .project-text FCC Challenge Weather app bliblablub
+    .project-list
+      .project
+        a(href="#")
+          .project-desc
+            .project-title Weather App
+            .project-text FCC Challenge Weather app bliblablub
+          .project-img
+            img(src="assets/img/700x400.png")
+    .project-list
+      .project
+        a(href="#")
+          .project-img
+            img(src="assets/img/700x400.png")
+          .project-desc
+            .project-title Weather App
+            .project-text FCC Challenge Weather app bliblablub
+section(id="about")
+  article
+    h1 About Me
     p.
       Auch gibt es niemanden, der den Schmerz an sich liebt, sucht oder wünscht, nur, weil er Schmerz ist, es sei denn, es kommt zu zufälligen Umständen, in denen Mühen und Schmerz ihm große Freude bereiten können. Um ein triviales Beispiel zu nehmen, wer von uns unterzieht sich je anstrengender körperlicher Betätigung, außer um Vorteile daraus zu ziehen?
     p.
       Aber wer hat irgend ein Recht, einen Menschen zu tadeln, der die Entscheidung trifft, eine Freude zu genießen, die keine unangenehmen Folgen hat, oder einen, der Schmerz vermeidet, welcher keine daraus resultierende Freude nach sich zieht? Auch gibt es niemanden, der den Schmerz an sich liebt, sucht oder wünscht, nur, weil er Schmerz ist, es sei denn, es kommt zu zufälligen Umständen, in denen Mühen und Schmerz ihm große Freude bereiten können.
     p.
       Um ein triviales Beispiel zu nehmen, wer von uns unterzieht sich je anstrengender körperlicher Betätigung, außer um Vorteile daraus zu ziehen? Aber wer hat irgend ein Recht, einen Menschen zu tadeln, der die Entscheidung trifft, eine Freude zu genießen, die keine unangenehmen Folgen hat, oder einen, der Schmerz vermeidet, welcher keine daraus resultierende Freude nach sich zieht? Auch gibt es niemanden, der den Schmerz an sich liebt, sucht oder wünscht, nur,
-
+section(id="contact")
+  article
+    h1 Contact
 //- Footer
 include ../includes/footer
