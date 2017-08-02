@@ -17,6 +17,9 @@ aside(class="vertical-sidebar")
       .icon
         a(href="https://github.com/Knochenmark")
           include ../svg/github.svg
+      .icon.codepen
+        a(href="https://codepen.io/Knochenmark")
+          include ../svg/codepen.svg
 section(id="projects")
   article
     h1 Projects
@@ -27,7 +30,7 @@ section(id="projects")
             img(src="assets/img/weather.jpg")
           .project-desc
             .project-title Weather App
-            .project-text FCC Challenge Weather app bliblablub
+            .project-text Using the darksky weather API to display the current weather, some other metrics and a preview of the current week.
       .project
         a(href="https://codepen.io/Knochenmark/full/qrqjaQ/")
           .project-img
@@ -73,7 +76,7 @@ section(id="projects")
       .project
         a(href="https://codepen.io/Knochenmark/full/qaWyOx/")
           .project-img
-            img(src="assets/img/700x400.png")
+            img(src="assets/img/calc.jpg")
           .project-desc
             .project-title Calculator
             .project-text Based on the iphone calculator
@@ -89,5 +92,10 @@ section(id="about")
 section(id="contact")
   article
     h1 Contact
+      h2 Thanks for visiting
+        .contact-content
+          .email
+            span Say hello
+            a(href="mailto:placeholder@gmail.com")  placeholder@gmail.com
 //- Footer
 include ../includes/footer
