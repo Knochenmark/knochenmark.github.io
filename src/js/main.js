@@ -60,9 +60,18 @@ function initSmoothScrolling(){
     });
 }
 
+function fadeInScrollTopButton(){
+  if ($(this).scrollTop() > 250) {
+    $('.back-to-top').fadeIn(400);
+  } else {
+    $('.back-to-top').fadeOut(400);
+  }
+}
+
 // DOM is ready
 $(function(){
   initSmoothScrolling();
+  $(window).scroll(fadeInScrollTopButton);
 });
 
 })( window, document, jQuery );
