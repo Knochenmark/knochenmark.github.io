@@ -18,6 +18,7 @@
       color lightseagreen
 
 .back-to-top
+  display none
   position fixed
   z-index 2
   bottom 2rem
@@ -98,7 +99,7 @@
 
 #contact
   h2
-    font-size 3rem
+    font-size 2.5rem
   .contact-content
     font-size 2rem
     font-family Georgia, sans-serif
@@ -114,3 +115,18 @@
       &:hover
         color lightcoral
         border-color lightcoral
+
++below($screen-sm)
+  #projects
+  #about
+  #contact
+  .footer-page
+    margin-left 0
+  #contact .email
+    font-size 1.8rem
+  .project-list
+    .project
+      a
+        flex-direction column
+  .back-to-top
+    bottom 5rem
