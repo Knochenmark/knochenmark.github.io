@@ -43,7 +43,7 @@ function initSmoothScrolling(){
           event.preventDefault();
           $('html, body').animate({
             scrollTop: target.offset().top
-          }, 600, function() {
+          }, 1000, function() {
             // Callback after animation
             // Must change focus!
             var $target = $(target);
@@ -61,7 +61,7 @@ function initSmoothScrolling(){
 }
 
 function fadeInScrollTopButton(){
-  if ($(this).scrollTop() > 250) {
+  if ($(window).scrollTop() > 250) {
     $('.back-to-top').fadeIn(400);
   } else {
     $('.back-to-top').fadeOut(400);
