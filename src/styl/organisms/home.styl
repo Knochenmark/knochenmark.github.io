@@ -9,18 +9,31 @@ body
   left 0
   z-index 2
   outline none
+  display flex
   .light-half
   .dark-half
-    height 50vh
-    width 100vw
-  .light-half
-    background-color white
-    .light
+    height 100vh
+    width 50vw
+  .dark-half
+    background-color black
+    position relative
+    .bug-issues
+      position absolute
+      left 5px
+      bottom 8px
+      svg
+        fill #999
+        transform rotate(-45deg)
+      &:hover
+        svg
+          fill lightseagreen
+    .dark
       .wrapper
         text-align center
         height 100%
         display flex
         flex-direction column
+        justify-content space-around
         .author
           width 100%
           padding-top 2vh
@@ -36,8 +49,8 @@ body
           text-transform: uppercase;
           letter-spacing: 2px;
           color: #999;
-  .dark-half
-    background-color black
+  .light-half
+    background-color white
 
 +below($screen-sm)
   .subline

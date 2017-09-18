@@ -72,6 +72,8 @@ function fadeInScrollTopButton(){
 $(function(){
   initSmoothScrolling();
   $(window).scroll(fadeInScrollTopButton);
+  $("#loader").removeClass("active");
+  $("#mondrian1").removeClass("offscreen");
 });
 
 })( window, document, jQuery );
