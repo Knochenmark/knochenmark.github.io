@@ -1,3 +1,39 @@
+@keyframes slide {
+  0% {
+    transform: translateY(0em);
+  }
+  10% {
+    transform: translateY(0em);
+  }
+  20% {
+    transform: translateY(-3rem);
+  }
+  30% {
+    transform: translateY(-3rem);
+  }
+  40% {
+    transform: translateY(-6rem);
+  }
+  50% {
+    transform: translateY(-6rem);
+  }
+  60%{
+    transform: translateY(-8.9rem);
+  }
+  70%{
+    transform: translateY(-8.9rem);
+  }
+  80% {
+    transform: translateY(-11.5rem);
+  }
+  90% {
+    transform: translateY(-11.5rem);
+  }
+  100% {
+    transform: translateY(-11.5rem);
+  }
+}
+
 .footer-page
   text-align center
   margin-left: 17vw;
@@ -8,6 +44,15 @@
       &:hover
         color lightcoral
         text-decoration underline
+  .rotator
+    margin -1rem 0
+    display inline-block
+    height 3rem
+    width 3rem
+    overflow hidden
+    padding 0 0.5rem 0 0
+    .slides
+      display block
+      animation: slide 8s infinite alternate ease-in-out;
   .emoji
     font-size 2rem
-    padding 0 0.5rem 0 0
