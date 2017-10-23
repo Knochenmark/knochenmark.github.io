@@ -136,7 +136,8 @@ gulp.task('img', function () {
     }))
     .pipe(gulp.dest(buildPaths.img))
     .pipe(reload({
-      stream: true
+      stream: true,
+      open: false
     }));
 });
 
