@@ -136,8 +136,7 @@ gulp.task('img', function () {
     }))
     .pipe(gulp.dest(buildPaths.img))
     .pipe(reload({
-      stream: true,
-      open: false
+      stream: true
     }));
 });
 
@@ -167,7 +166,9 @@ gulp.task('browser-sync', ['pug'], function () {
   browserSync({
     server: {
       baseDir: './'
-    }
+    },
+    open: false,
+    browser: 'google chrome'
   });
 });
 
