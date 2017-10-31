@@ -110,8 +110,8 @@ gulp.task('fonts', function () {
 gulp.task('js', function () {
   return gulp.src([srcPaths.jsLibs, srcPaths.jsPlugins, srcPaths.jsModules, srcPaths.js])
     .pipe(plumber())
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'))
+    // .pipe(jshint()) // Todo: try eslint with exclude options
+    // .pipe(jshint.reporter('default'))
     .pipe(concat('main.js'))
     .pipe(uglify()) //--> minify js
     .pipe(browserSync.reload({
