@@ -1,7 +1,9 @@
 "use strict";
 
-var gulp = require('gulp'),
+var fs = require('fs'),
+  gulp = require('gulp'),
   pug = require('gulp-pug'),
+  data = require('gulp-data'),
   clean = require('gulp-clean'),
   stylus = require('gulp-stylus'),
   jeet = require('jeet'),
@@ -64,6 +66,10 @@ gulp.task('clean', function () {
 gulp.task('pug', function () {
   return gulp.src(srcPaths.pugPages)
     .pipe(plumber())
+    .pipe(data(function (file) {
+      console.log("current path", process.cwd());
+      return JSON.parse(fs.readFileSync('./src/views/json/data.json'))
+    }))
     .pipe(pug({
       client: false,
       pretty: true
