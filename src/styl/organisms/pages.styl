@@ -15,7 +15,7 @@
       margin 0
       text-transform uppercase
       letter-spacing 2px
-      color lightseagreen
+      color $primaryColor
 
 .back-to-top
   display none
@@ -26,12 +26,12 @@
   width 24px
   height 24px
   svg
-    fill lightseagreen
+    fill $primaryColor
     height 100%
     width 100%
   &:hover
     svg
-      fill lightcoral
+      fill $secondaryColor
 
 .project-list
   .project
@@ -40,7 +40,7 @@
     flex-direction row
     &:hover
       outline-style double
-      outline-color lightseagreen
+      outline-color $primaryColor
       .project-img
         img
           opacity 0.8
@@ -71,13 +71,13 @@
         a
           padding 1rem 2rem
           background #fff
-          color lightseagreen
+          color $primaryColor
           font-size 1.5rem
           text-align center
-          border 2px solid lightseagreen
+          border 2px solid $primaryColor
           &:hover
-            color lightcoral
-            border-color lightcoral
+            color $secondaryColor
+            border-color $secondaryColor
     .project-desc
       flex 1
       padding-left 5%
@@ -111,7 +111,7 @@
           line-height 2.5rem
           padding 0 0.8rem
           border-radius 1rem
-          background-color #20b2aa
+          background-color $primaryColor
 
 #about
   p
@@ -120,7 +120,7 @@
     font-size 1.6rem
     span
       font-style italic
-      color lightseagreen
+      color $primaryColor
 
 #contact
   h2
@@ -134,12 +134,12 @@
     font-size 5rem
     a
       text-decoration none
-      color lightseagreen
-      border-bottom 1px solid lightseagreen
+      color $primaryColor
+      border-bottom 1px solid $primaryColor
       margin-left 1rem
       &:hover
-        color lightcoral
-        border-color lightcoral
+        color $secondaryColor
+        border-color $secondaryColor
 
 +below($screen-sm)
   #projects
@@ -164,7 +164,7 @@
     bottom 5rem
     svg
       &:hover
-        fill lightseagreen
+        fill $primaryColor
 
 @media only screen
   .project-list
