@@ -17,18 +17,17 @@ body
   .dark-half
     background-color black
     position relative
-    &:after
-      content ""
+    .image-wrapper
       background url(/./assets/img/ergodox01.jpg)
       background-repeat no-repeat
       background-size cover
       background-position center
       opacity 0.3
+      position absolute
       top 0
       left 0
       bottom 0
       right 0
-      position absolute
       pointer-events none
     .bug-issues
       position absolute
@@ -41,6 +40,11 @@ body
         svg
           fill $primaryColor
     .dark
+      position absolute
+      top 0
+      left 0
+      bottom 0
+      right 0
       .wrapper
         text-align center
         height 100%
@@ -56,12 +60,12 @@ body
           text-transform uppercase
           text-align center
           letter-spacing 2px
-          color #999
+          color #ccc
         .subline
           font-family 'Unica One', sans-serif
           text-transform uppercase
           letter-spacing 2px
-          color #999
+          color #ccc
   .light-half
     background-color white
 
