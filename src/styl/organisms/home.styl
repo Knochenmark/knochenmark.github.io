@@ -11,6 +11,21 @@ body
   outline none
   display flex
   .light-half
+    background-color white
+    .light
+      height 100%
+      width 100%
+      .node
+        stroke #fff
+        stroke-width 1.5px
+      .node text
+        font 14px helvetica
+        letter-spacing 1px
+        user-select none
+      .link
+        stroke #999;
+        stroke-opacity .6;
+  .light-half,
   .dark-half
     height 100vh
     width 50vw
@@ -66,8 +81,6 @@ body
           text-transform uppercase
           letter-spacing 2px
           color #ccc
-  .light-half
-    background-color white
 
 +below($screen-sm)
   .subline
@@ -76,7 +89,7 @@ body
 
 @media only screen and (orientation: portrait)
   #home
-    flex-direction: column-reverse
+    flex-direction: column
     .light-half
     .dark-half
       height 50vh
