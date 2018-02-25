@@ -21,38 +21,47 @@ var fs = require('fs'),
   plumber = require('gulp-plumber'),
   watch = require('gulp-watch'),
   batch = require('gulp-batch'),
-  runSequence = require('run-sequence'),
+  runSequence = require('run-sequence');
 
-  // Paths
-  paths = {
-    dev: "./src/",
-    dest: "./assets/",
-    bower: "./bower_components/"
-  },
-  srcPaths = {
-    js: paths.dev + 'js/*.js',
-    jsLibs: paths.dev + 'js/libs/*.js',
-    jsPlugins: paths.dev + 'js/plugins/*.js',
-    jsModules: paths.dev + 'js/modules/*.js',
+var sourcemaps = require('gulp-sourcemaps');
+var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
+var browserify = require('browserify');
+var watchify = require('watchify');
+var babel = require('babelify');
 
-    css: paths.dev + 'styl/**/*.styl',
-    mainStyl: paths.dev + 'styl/main.styl',
+var inject = require('gulp-inject');
 
-    pug: paths.dev + 'views/**/*.pug',
-    pugPages: paths.dev + 'views/pages/**/*.pug',
+// Paths
+var paths = {
+  dev: "./src/",
+  dest: "./assets/",
+  bower: "./bower_components/"
+},
+srcPaths = {
+  js: paths.dev + 'js/*.js',
+  jsLibs: paths.dev + 'js/libs/*.js',
+  jsPlugins: paths.dev + 'js/plugins/*.js',
+  jsModules: paths.dev + 'js/modules/*.js',
 
-    img: paths.dev + 'img/**/*.{jpg,png,gif,svg}',
+  css: paths.dev + 'styl/**/*.styl',
+  mainStyl: paths.dev + 'styl/main.styl',
 
-    fonts: paths.dev + 'fonts/*',
-  },
-  buildPaths = {
-    build: paths.dest + '**/*',
-    js: paths.dest + 'js/',
-    css: paths.dest + 'css/',
-    pug: './',
-    img: paths.dest + 'img',
-    fonts: paths.dest + 'css/fonts',
-  };
+  pug: paths.dev + 'views/**/*.pug',
+  pugPages: paths.dev + 'views/pages/**/*.pug',
+
+  img: paths.dev + 'img/**/*.{jpg,png,gif,svg}',
+
+  fonts: paths.dev + 'fonts/*',
+},
+buildPaths = {
+  build: paths.dest + '**/*',
+  js: paths.dest + 'js/',
+  css: paths.dest + 'css/',
+  pug: './',
+  img: paths.dest + 'img',
+  fonts: paths.dest + 'css/fonts',
+};
 
 
 // Clean all 'dest' directory before generating the files
@@ -62,12 +71,21 @@ gulp.task('clean', function () {
 });
 
 
+// gulp.task('index',['pug'], function () {
+//   var target = gulp.src('./index.html');
+//   // It's not necessary to read the files (will speed up things), we're only after their paths:
+//   var sources = gulp.src([srcPaths.jsLibs], {read: false});
+//   return target.pipe(inject(sources))
+//     .pipe(gulp.dest('./src'));
+// });
+
+
 // Pug Task
 gulp.task('pug', function () {
   return gulp.src(srcPaths.pugPages)
     .pipe(plumber())
     .pipe(data(function (file) {
-      console.log("current path", process.cwd());
+      // console.log("current path", process.cwd());
       return JSON.parse(fs.readFileSync('./src/views/json/data.json'))
     }))
     .pipe(pug({
@@ -111,24 +129,25 @@ gulp.task('fonts', function () {
     }));
 });
 
+gulp.task('concat', ['js'], function(){
+  return gulp.src([srcPaths.jsLibs, srcPaths.jsPlugins, srcPaths.jsModules, srcPaths.js, buildPaths.js])
+  .pipe(plumber())
+  .pipe(concat('main.js'))
+  .pipe(gulp.dest(buildPaths.js))
+})
 
 // Javascript Task
 gulp.task('js', function () {
-  return gulp.src([srcPaths.jsLibs, srcPaths.jsPlugins, srcPaths.jsModules, srcPaths.js])
-    .pipe(plumber())
-    // .pipe(jshint()) // Todo: try eslint with exclude options
-    // .pipe(jshint.reporter('default'))
-    .pipe(concat('main.js'))
-    .pipe(uglify()) //--> minify js
-    .pipe(browserSync.reload({
-      stream: true
-    }))
-    .pipe(gulp.dest(buildPaths.js))
-    .pipe(reload({
-      stream: true
-    }));
+  return browserify('./src/js/main.js', {debug: true, extensions: ['es6']})
+      .transform("babelify", {presets: ["es2015"]})
+      .bundle()
+      .pipe(source('bundle.js'))
+      .pipe(buffer())
+      .pipe(sourcemaps.init({loadMaps: true}))
+      .pipe(sourcemaps.write())
+      .pipe(gulp.dest(buildPaths.js))
+      .pipe(browserSync.reload({stream: true}));
 });
-
 
 // Img Task
 gulp.task('img', function () {
@@ -182,7 +201,7 @@ gulp.task('browser-sync', ['pug'], function () {
 // Run Sequence allows you to perform the 'clean' task before others
 // It also allows to ascertain the exact time of 'default' with callback
 gulp.task('default', function (cb) {
-  return runSequence('clean', ['pug', 'js', 'css', 'img', 'fonts', 'browser-sync', 'watch'], cb);
+  return runSequence('clean', ['pug', 'js','css', 'img', 'fonts', 'browser-sync', 'watch'], cb);
 });
 
 gulp.task('deploy', function (cb) {

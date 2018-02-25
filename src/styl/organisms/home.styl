@@ -11,12 +11,12 @@ body
   outline none
   display flex
   .light-half
-    background-color white
+    background-color $white
     .light
       height 100%
       width 100%
       .node
-        stroke #fff
+        stroke $white
         stroke-width 1.5px
       .node text
         font 14px helvetica
@@ -47,7 +47,7 @@ body
     .bug-issues
       position absolute
       left 5px
-      bottom 8px
+      top 8px
       z-index 2
       svg
         fill #999
@@ -66,22 +66,40 @@ body
         height 100%
         display flex
         flex-direction column
-        justify-content space-around
-        .author
-          width 100%
-          padding-top 2vh
-          font-weight 600
-          font-size 1.5rem
+        justify-content space-between
+        .top
+          margin-top 5rem
+          .author
+            width 100%
+            padding-top 2vh
+            font-weight 600
+            font-size 1.5rem
+            font-family 'Abel', sans-serif
+            text-transform uppercase
+            text-align center
+            letter-spacing 2px
+            color #ccc
+          .subline
+            font-family 'Unica One', sans-serif
+            text-transform uppercase
+            letter-spacing 2px
+            color #ccc
+        #languages
+          display flex
+          justify-content center
+          margin 2rem
           font-family 'Abel', sans-serif
-          text-transform uppercase
-          text-align center
-          letter-spacing 2px
-          color #ccc
-        .subline
-          font-family 'Unica One', sans-serif
-          text-transform uppercase
-          letter-spacing 2px
-          color #ccc
+          .language
+            margin 0 0.5rem
+            font-weight 500
+            font-size 1.5rem
+            text-transform uppercase
+            letter-spacing 1px
+            &:hover
+              color $primaryColor
+              cursor pointer
+            &.active
+              font-weight: 700
 
 +below($screen-sm)
   .subline

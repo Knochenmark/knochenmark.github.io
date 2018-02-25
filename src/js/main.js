@@ -1,26 +1,17 @@
-;(function( window, document, $, undefined ) {
+import i18next from 'i18next';
+import jqueryI18next from 'jquery-i18next';
+
+import * as skillset from './modules/skillset';
 
 'use strict';
 
-	/*
-		Some patterns for JS:
+var english = require(".././locales/en.json");
+var german = require(".././locales/de.json");
 
-		- Immediately-Invoked Function Expression (IIFE)
-		http://benalman.com/news/2010/11/immediately-invoked-function-expression/
-
-		- The Module Pattern
-		https://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript
-
-		- Revealing Module Pattern
-		https://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript
-
-		- Locaweb Style
-		http://opensource.locaweb.com.br/locawebstyle/documentacao/praticas/javascript/
-
-		- Browser Diet
-		https://browserdiet.com/
-
-	*/
+var resources = {
+  en: english,
+  de: german
+};
 
 function initSmoothScrolling(){
   // Select all links with hashes
@@ -68,12 +59,52 @@ function fadeInScrollTopButton(){
   }
 }
 
+var languageLookup = {
+  "Deutsch": "de",
+  "English": "en"
+}
+
+function switchLanguage(event){
+  var target = $(event.target);
+  // if($(event.target).hasClass("active"))
+  //   return;
+  $("#languages .language").removeClass("active");
+  target.addClass("active");
+  i18next.changeLanguage(languageLookup[target.text()]);
+  $("[data-i18n]").localize();
+}
+
+function addLanguageSwitchHandler(){
+  $("#languages .language").click(switchLanguage)
+}
+
+function initJqueryI18next(){
+  i18next.init({
+    lng: 'en',
+    debug: true,
+    resources: resources
+  }, function(err, t) {
+    // initialized and ready to go!
+  });
+
+  jqueryI18next.init(i18next, $, {
+    tName: 't', // --> appends $.t = i18next.t
+    i18nName: 'i18n', // --> appends $.i18n = i18next
+    handleName: 'localize', // --> appends $(selector).localize(opts);
+    selectorAttr: 'data-i18n', // selector for translating elements
+    targetAttr: 'i18n-target', // data-() attribute to grab target element to translate (if diffrent then itself)
+    optionsAttr: 'i18n-options', // data-() attribute that contains options, will load/set if useOptionsAttr = true
+    useOptionsAttr: false, // see optionsAttr
+    parseDefaultValueFromContent: true // parses default values from content ele.val or ele.text
+  });
+}
+
 // DOM is ready
 $(function(){
   initSmoothScrolling();
+  initJqueryI18next();
+  addLanguageSwitchHandler();
+  skillset.init();
   $(window).scroll(fadeInScrollTopButton);
   $("#loader").removeClass("active");
-  $("#mondrian1").removeClass("offscreen");
 });
-
-})( window, document, jQuery );

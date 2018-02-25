@@ -202,7 +202,7 @@ var data = {
     }]
 };
 
-$(function(){
+export function init(){
 
 
 //Constants for the SVG
@@ -315,11 +315,11 @@ force.on("tick", function () {
         .attr("y2", function (d) {
             return d.target.y;
         });
-  node.each(collide(0.5)); //Added 
+  node.each(collide(0.5)); //Added
 
     node.attr("transform", function (d) {
         return "translate(" + d.x + "," + d.y + ")";
     });
 });
 
-});
+}

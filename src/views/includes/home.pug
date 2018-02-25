@@ -13,11 +13,15 @@ section(id="home")
           h2.subline design. code. experiment.
         nav.home-navigation
           .nav-item
-            a(href="#projects") Projects
+            a(href="#projects" data-i18n="nav:projects") Projects
           .nav-item
-            a(href="#about") About Me
+            a(href="#about" data-i18n="nav:aboutMe") About Me
           .nav-item
-            a(href="#contact") Contact
+            a(href="#contact" data-i18n="nav:contact") Contact
+        #languages
+          .language.active English
+          .separator |
+          .language Deutsch
     .image-wrapper
 a(href="#home" class="back-to-top")
   include ../svg/arrow-up.svg
