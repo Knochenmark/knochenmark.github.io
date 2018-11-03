@@ -1,5 +1,11 @@
 {
   "projects": [{
+    "title": "Recipebox",
+    "imageUrl": "assets/img/recipebox.jpg",
+    "link": "https://knochenmark.github.io/recipebox/",
+    "chips": ["Typescript", "React", "Redux", "Rxjs", "Typestyle", "TravisCI"],
+    "text": "The project offers a simple way to manage your recipe collection. Recipebox utilizes localStorage to store your recipe collection. You can add further recipes, edit existing ones and bookmark your favorites."
+  }, {
     "title": "Weather App",
     "imageUrl": "assets/img/weather.jpg",
     "link": "https://codepen.io/Knochenmark/full/ZpYKPE/",
