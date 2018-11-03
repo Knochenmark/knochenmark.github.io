@@ -3,11 +3,11 @@ mixin project(project)
     .project-img
       img(src=project.imageUrl alt=project.title)
       .project-link
-        a(href=project.link) View on Codepen
+        a(href=project.link) View Demo
     .project-desc
       .title-wrapper
         .project-title= project.title
-        .icon(title="View on Codepen")
+        .icon(title="View Demo")
           a(href=project.link)
             include ../svg/link.svg
       .chips
